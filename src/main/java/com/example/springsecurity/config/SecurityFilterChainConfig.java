@@ -25,8 +25,12 @@ public class SecurityFilterChainConfig {
             .authorizeHttpRequests(auth -> auth
                 .anyRequest().authenticated() // Ensure authentication is required
             )
-            .formLogin(Customizer.withDefaults())
-            .httpBasic(Customizer.withDefaults())
+            .formLogin(configurer -> {
+                configurer.defaultSuccessUrl("/greeting", true);
+            })
+            .httpBasic(configurer -> {
+                configurer.realmName("custom");
+            })
             .addFilterAfter(new AuthenticationLoggingFilter(), BasicAuthenticationFilter.class)
             .build();
     }
