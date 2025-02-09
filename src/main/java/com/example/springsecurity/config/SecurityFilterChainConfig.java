@@ -1,10 +1,10 @@
 package com.example.springsecurity.config;
 
+import com.example.springsecurity.authenticationprovider.SuperUserAuthenticationProvider;
 import com.example.springsecurity.filter.AuthenticationLoggingFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
@@ -20,22 +20,26 @@ public class SecurityFilterChainConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        return httpSecurity
+        httpSecurity
             .authenticationProvider(authenticationProvider)
+            .authenticationProvider(new SuperUserAuthenticationProvider())
             .authorizeHttpRequests(auth -> auth
                 .anyRequest().authenticated() // Ensure authentication is required
             )
-            .with(new PasswordLoginConfigurer(), configurer -> {
-                configurer.password("secret1");
-                configurer.password("secret2");
-            })
+            .with(
+                new PasswordLoginConfigurer(), configurer -> {
+                    configurer.password("secret1");
+                    configurer.password("secret2");
+                }
+            )
             .formLogin(configurer -> {
                 configurer.defaultSuccessUrl("/greeting", true);
             })
             .httpBasic(configurer -> {
                 configurer.realmName("custom");
             })
-            .addFilterAfter(new AuthenticationLoggingFilter(), BasicAuthenticationFilter.class)
-            .build();
+            .addFilterAfter(new AuthenticationLoggingFilter(), BasicAuthenticationFilter.class);
+
+        return httpSecurity.build();
     }
 }

@@ -36,6 +36,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
             );
         } else {
             throw new BadCredentialsException("Something went wrong!");
+            // return null;
         }
     }
 
