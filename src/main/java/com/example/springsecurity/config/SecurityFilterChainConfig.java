@@ -25,6 +25,10 @@ public class SecurityFilterChainConfig {
             .authorizeHttpRequests(auth -> auth
                 .anyRequest().authenticated() // Ensure authentication is required
             )
+            .with(new PasswordLoginConfigurer(), configurer -> {
+                configurer.password("secret1");
+                configurer.password("secret2");
+            })
             .formLogin(configurer -> {
                 configurer.defaultSuccessUrl("/greeting", true);
             })
