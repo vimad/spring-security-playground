@@ -43,7 +43,9 @@ public class PasswordHeaderFilter extends OncePerRequestFilter {
             Authentication authenticate = authenticationManager.authenticate(authentication);
             var securityContext = SecurityContextHolder.createEmptyContext();
             securityContext.setAuthentication(authenticate);
-            securityContextRepository.saveContext(securityContext, request, response);
+            SecurityContextHolder.setContext(securityContext);
+            // below is required if you need to persist this in current session
+            // securityContextRepository.saveContext(securityContext, request, response);
             filterChain.doFilter(request, response);
         } catch (AuthenticationException e) {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
