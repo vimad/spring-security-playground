@@ -1,7 +1,7 @@
-package com.example.springsecurity.config;
+package com.example.authentication.config;
 
-import com.example.springsecurity.authenticationprovider.SuperUserAuthenticationProvider;
-import com.example.springsecurity.filter.AuthenticationLoggingFilter;
+import com.example.authentication.authenticationprovider.SuperUserAuthenticationProvider;
+import com.example.authentication.filter.AuthenticationLoggingFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;

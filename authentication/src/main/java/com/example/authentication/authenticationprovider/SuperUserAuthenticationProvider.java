@@ -1,4 +1,4 @@
-package com.example.springsecurity.authenticationprovider;
+package com.example.authentication.authenticationprovider;
 
 
 import org.springframework.security.authentication.AuthenticationProvider;

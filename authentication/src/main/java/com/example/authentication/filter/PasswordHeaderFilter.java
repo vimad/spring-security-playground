@@ -1,12 +1,11 @@
-package com.example.springsecurity.filter;
+package com.example.authentication.filter;
 
-import com.example.springsecurity.config.PasswordAuthentication;
+import com.example.authentication.config.PasswordAuthentication;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;

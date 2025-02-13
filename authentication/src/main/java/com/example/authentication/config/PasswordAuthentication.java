@@ -1,4 +1,4 @@
-package com.example.springsecurity.config;
+package com.example.authentication.config;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;

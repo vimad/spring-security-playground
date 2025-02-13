@@ -1,9 +1,8 @@
-package com.example.springsecurity.authenticationprovider;
+package com.example.authentication.authenticationprovider;
 
-import com.example.springsecurity.config.PasswordAuthentication;
+import com.example.authentication.config.PasswordAuthentication;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 

@@ -1,7 +1,7 @@
-package com.example.springsecurity.config;
+package com.example.authentication.config;
 
-import com.example.springsecurity.authenticationprovider.PasswordAuthenticationProvider;
-import com.example.springsecurity.filter.PasswordHeaderFilter;
+import com.example.authentication.authenticationprovider.PasswordAuthenticationProvider;
+import com.example.authentication.filter.PasswordHeaderFilter;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;

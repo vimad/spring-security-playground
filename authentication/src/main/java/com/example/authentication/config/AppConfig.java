@@ -1,4 +1,4 @@
-package com.example.springsecurity.config;
+package com.example.authentication.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.InitializingBean;
