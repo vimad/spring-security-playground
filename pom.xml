@@ -24,6 +24,7 @@
     <modules>
         <module>authentication</module>
         <module>authorization</module>
+        <module>nonweb</module>
     </modules>
     <scm>
 		<connection/>
