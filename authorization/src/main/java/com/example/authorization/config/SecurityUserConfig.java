@@ -27,8 +27,7 @@ public class SecurityUserConfig {
             .build();
         UserDetails readWriteUser = User.withUsername("read-write-user")
             .password("789")
-            .authorities("read")
-            .authorities("write")
+            .authorities("read", "write")
             .build();
         UserDetails adminUser = User.withUsername("admin-user")
             .password("789")

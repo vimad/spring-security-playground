@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.expression.WebExpressionAuthorizationManager;
 
 @Configuration
 public class SecurityFilterChainConfig {
@@ -12,7 +13,16 @@ public class SecurityFilterChainConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-            .authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/read").hasAuthority("read")
+                .requestMatchers("/write").access(
+                    new WebExpressionAuthorizationManager("hasAuthority('write')")
+                )
+                .requestMatchers("/read-write").access(
+                    new WebExpressionAuthorizationManager("hasAuthority('write') and hasAuthority('read')")
+                )
+                .requestMatchers("/admin").hasRole("admin")
+            )
             .formLogin(Customizer.withDefaults())
             .httpBasic(Customizer.withDefaults());
 
