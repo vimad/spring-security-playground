@@ -22,6 +22,7 @@ public class SecurityFilterChainConfig {
                     new WebExpressionAuthorizationManager("hasAuthority('write') and hasAuthority('read')")
                 )
                 .requestMatchers("/admin").hasRole("admin")
+                .anyRequest().authenticated()
             )
             .formLogin(Customizer.withDefaults())
             .httpBasic(Customizer.withDefaults());

@@ -1,5 +1,6 @@
 package com.example.authorization.controller;
 
+import com.example.authorization.model.SecureResource;
 import com.example.authorization.service.ResourceService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,5 +40,10 @@ public class ResourceController {
     public String admin() {
         log.info("Admin resource");
         return "admin";
+    }
+
+    @GetMapping("/secure-resource")
+    public SecureResource secureResource() {
+        return resourceService.getSecureResource();
     }
 }
